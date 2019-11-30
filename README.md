@@ -1,7 +1,11 @@
 # iso_countries
 
 A plugin for fetching ISOCountries data from device OS. Name of countries can be
-obtained in different languages by passing in the language format. ("fr-fr", "de-de")
+obtained in different languages by passing in the language format. ("fr-fr", "de-de").
+No values are HARDCODED, country details are fetched from OS.
+
+
+![iso_countries](https://user-images.githubusercontent.com/6782228/69907084-a58ea080-13ce-11ea-957b-9068a49a6e19.gif)
 
 ## Usage
 
