@@ -1,5 +1,5 @@
 name: iso_countries
-description: A plugin to get list of ISO Countries from device OS.
+description: A plugin for fetching ISOCountries data from device OS. Name of countries can be obtained in different languages.
 version: 1.0.1
 author: Anoop M <anoopm6@gmail.com>
 homepage: https://github.com/anoop4real/flutter_iso_countries
