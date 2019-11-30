@@ -13,20 +13,24 @@ class IsoCountries {
     final List<Country> isoCountries = [];
     final List countries = await _channel.invokeMethod('getISOCountries');
     // Parse
-    for(final countryMap in countries){
-      final country = Country(name: countryMap['name'], countryCode: countryMap['countryCode']);
+    for (final countryMap in countries) {
+      final country = Country(
+          name: countryMap['name'], countryCode: countryMap['countryCode']);
       isoCountries.add(country);
     }
     return isoCountries;
   }
 
   /// Function to get the country data in the language code passed in
-  static Future<List<Country>> iso_countries_for_locale(locale_identifier) async {
+  static Future<List<Country>> iso_countries_for_locale(
+      locale_identifier) async {
     final List<Country> isoCountries = [];
-    final List countries = await _channel.invokeMethod('getISOCountriesForLocale',{'locale_identifier' : locale_identifier});
+    final List countries = await _channel.invokeMethod(
+        'getISOCountriesForLocale', {'locale_identifier': locale_identifier});
     // Parse
-    for(final countryMap in countries){
-      final country = Country(name: countryMap['name'], countryCode: countryMap['countryCode']);
+    for (final countryMap in countries) {
+      final country = Country(
+          name: countryMap['name'], countryCode: countryMap['countryCode']);
       isoCountries.add(country);
     }
     return isoCountries;

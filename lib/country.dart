@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 
 /// Model object to hold the Country data
@@ -14,6 +13,4 @@ class Country {
 
   /// Country name
   final String name;
-
-
 }
