@@ -9,3 +9,7 @@ Minor changes
 ## 1.0.2
 ___
 Minor changes
+
+## 1.0.3
+___
+Fix imports

@@ -1,7 +1,11 @@
+library iso_countries;
+
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:iso_countries/country.dart';
+
+export 'country.dart';
 
 /// Platform channel claa to fetch the country info
 class IsoCountries {
