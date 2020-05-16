@@ -58,13 +58,8 @@ class CountryDataStore private constructor() {
     fun getIsoCountries(localeIdentifier: String = "" ) : ArrayList<HashMap<String, String>> {
       var countriesList = arrayListOf<HashMap<String, String>>()
       for (countryCode in Locale.getISOCountries()) {
-        lateinit var locale: Locale
-        // If no locale is passed, then take the locale from Current
-        if (localeIdentifier.isEmpty()) {
-          locale = Locale.getDefault()
-        } else {
-          locale = Locale(localeIdentifier,countryCode)
-        }
+        // If no locale is passed, then use "en_US"
+        val locale = Locale(localeIdentifier,countryCode)
         var countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeIdentifier))
         if (countryName == null) {
           countryName = "UnIdentified"
@@ -81,13 +76,7 @@ class CountryDataStore private constructor() {
       if (code.isEmpty()){
         return hashMapOf<String, String>()
       }
-      lateinit var locale: Locale
-      // If no locale is passed, then take the locale from Current
-      if (localeIdentifier.isEmpty()) {
-        locale = Locale.getDefault()
-      } else {
-        locale = Locale(localeIdentifier,code)
-      }
+      val locale = Locale(localeIdentifier,code)
       val countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeIdentifier))
       if (countryName == null) {
         return hashMapOf<String, String>()
