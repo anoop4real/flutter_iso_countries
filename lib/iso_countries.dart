@@ -39,4 +39,19 @@ class IsoCountries {
     }
     return isoCountries;
   }
+
+  /// Function to get a single country data for the country code and locale identifier passed in
+  /// If no valid country found, then you will get an empty hash map
+  /// Optional localeIdentifier, if the identifier is not provided, then current locale is used
+
+  static Future<Country> iso_countries_for_code_for_locale(countryCode,
+      {locale_identifier = ''}) async {
+    final countryMap = await _channel.invokeMethod(
+        'getCountryForCountryCodeWithLocaleIdentifier',
+        {'countryCode': countryCode, 'locale_identifier': locale_identifier});
+    // Parse
+    final Country country = Country(
+        name: countryMap['name'], countryCode: countryMap['countryCode']);
+    return country;
+  }
 }

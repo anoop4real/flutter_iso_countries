@@ -34,6 +34,17 @@ class IsoCountriesPlugin: MethodCallHandler {
         result.success(CountryDataStore.getIsoCountries())
       }
     }
+    else if (call.method == "getCountryForCountryCodeWithLocaleIdentifier") {
+      val args = call.arguments as? HashMap<String,String>
+      if (args !=null){
+        val identifier = args.getOrElse("locale_identifier"){""}
+        val code = args.getOrElse("countryCode"){""}
+        result.success(CountryDataStore.getCountryForCountryCode(code,identifier))
+      } else {
+        // Return an empty hashmap if arguments are missing
+        result.success(hashMapOf<String, String>())
+      }
+    }
     else {
       result.notImplemented()
     }
@@ -44,13 +55,17 @@ class CountryDataStore private constructor() {
 
   companion object{
 
-    var countriesList = arrayListOf<HashMap<String, String>>()
-
-    fun getIsoCountries(localeIdentifer: String = "" ) : ArrayList<HashMap<String, String>> {
-      countriesList.clear()
+    fun getIsoCountries(localeIdentifier: String = "" ) : ArrayList<HashMap<String, String>> {
+      var countriesList = arrayListOf<HashMap<String, String>>()
       for (countryCode in Locale.getISOCountries()) {
-        val locale = Locale(localeIdentifer,countryCode)
-        var countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeIdentifer))
+        lateinit var locale: Locale
+        // If no locale is passed, then take the locale from Current
+        if (localeIdentifier.isEmpty()) {
+          locale = Locale.getDefault()
+        } else {
+          locale = Locale(localeIdentifier,countryCode)
+        }
+        var countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeIdentifier))
         if (countryName == null) {
           countryName = "UnIdentified"
         }
@@ -58,10 +73,28 @@ class CountryDataStore private constructor() {
         countriesList.add(simpleCountry)
       }
       countriesList = ArrayList(countriesList.sortedWith(compareBy { it["name"] }))
-
       return  countriesList
     }
 
+    // Get a country name from code
+    fun getCountryForCountryCode(code: String, localeIdentifier: String = "" ): HashMap<String, String> {
+      if (code.isEmpty()){
+        return hashMapOf<String, String>()
+      }
+      lateinit var locale: Locale
+      // If no locale is passed, then take the locale from Current
+      if (localeIdentifier.isEmpty()) {
+        locale = Locale.getDefault()
+      } else {
+        locale = Locale(localeIdentifier,code)
+      }
+      val countryName: String? = locale.getDisplayCountry(Locale.forLanguageTag(localeIdentifier))
+      if (countryName == null) {
+        return hashMapOf<String, String>()
+      }
+      val simpleCountry = hashMapOf("name" to countryName, "countryCode" to code)
+      return simpleCountry
+    }
   }
 }
 

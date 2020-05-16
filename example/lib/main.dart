@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Country> countryList;
+  Country country;
   @override
   void initState() {
     super.initState();
@@ -59,42 +60,66 @@ class _MyAppState extends State<MyApp> {
       countryList = countries;
     });
   }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> getCountryForCodeWithIdentifier(
+      String code, String localeIdentifier) async {
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      country = await IsoCountries.iso_countries_for_code_for_locale(code,
+          locale_identifier: localeIdentifier);
+    } on PlatformException {
+      country = null;
+    }
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      //this.country = country;
+      print(country.name);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: prepareLocaleSpecificCountries,
-              child: Text("fr-fr"),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-            ),
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: prepareDefaultCountries,
-              child: Text("Default"),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-            ),
-          ],
-          title: const Text('Plugin example app'),
-        ),
-        body: _buildListOfCountries()
-      ),
+          appBar: AppBar(
+            actions: <Widget>[
+              FlatButton(
+                textColor: Colors.white,
+                onPressed: prepareLocaleSpecificCountries,
+                child: Text("fr-fr"),
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
+              ),
+              FlatButton(
+                textColor: Colors.white,
+                onPressed: prepareDefaultCountries,
+                child: Text("Default"),
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
+              ),
+            ],
+            title: const Text('Plugin example app'),
+          ),
+          body: _buildListOfCountries()),
     );
   }
 
-  Widget _buildListOfCountries(){
-
-    return ListView.builder(itemBuilder: (BuildContext context, int index){
-      final Country country = countryList[index];
-      return ListTile(
-        title: Text(country.name),
-        subtitle: Text(country.countryCode),
-
-      );
-    },
-    itemCount: countryList != null ? countryList.length : 0,);
+  Widget _buildListOfCountries() {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        final Country country = countryList[index];
+        return ListTile(
+            title: Text(country.name),
+            subtitle: Text(country.countryCode),
+            onTap: () =>
+                getCountryForCodeWithIdentifier(country.countryCode, 'de-de'));
+      },
+      itemCount: countryList != null ? countryList.length : 0,
+    );
   }
 }

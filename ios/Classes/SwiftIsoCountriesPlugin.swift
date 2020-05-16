@@ -22,6 +22,13 @@ public class SwiftIsoCountriesPlugin: NSObject, FlutterPlugin {
             return
         }
         result(CountryDataStore().getIsoCountries(localeIdentifer: localeId))
+    case "getCountryForCountryCodeWithLocaleIdentifier":
+        guard let args = call.arguments as? [String: Any], let code = args["countryCode"] as? String ,let localeId = args["locale_identifier"] as? String else {
+            //If no arguments then retuen the default
+            result([:])
+            return
+        }
+        result(CountryDataStore().getCountryForCountryWithCode(code: code, localeIdentifier: localeId))
     default:
         result(FlutterMethodNotImplemented)
     }
@@ -32,17 +39,36 @@ internal class CountryDataStore{
     
     private var countriesList = [[String: String]]()
     // Get the list of iso countries from NSLocale
-    func getIsoCountries(localeIdentifer: String = "en_US") -> [[String: String]]{
+    func getIsoCountries(localeIdentifer: String = "") -> [[String: String]]{
+        
+        // Get current locale
+        var locale = Locale.current as NSLocale
+        if (!localeIdentifer.isEmpty) {
+            locale = NSLocale(localeIdentifier: localeIdentifer)
+        }
         for countryCode in NSLocale.isoCountryCodes {
-
-            var countryName: String? = NSLocale().displayName(forKey: .countryCode, value: countryCode)
-            if countryName == nil {
-                countryName = NSLocale(localeIdentifier: localeIdentifer).displayName(forKey: .countryCode, value: countryCode)
-            }
+            let countryName: String? = locale.displayName(forKey: .countryCode, value: countryCode)
             let simpleCountry = ["name": countryName ?? "Unknown","countryCode": countryCode.lowercased() ]
             countriesList.append(simpleCountry)
         }
         countriesList = countriesList.sorted(by: {$0["name"]! < $1["name"]!})
         return countriesList
+    }
+    
+    func getCountryForCountryWithCode(code: String, localeIdentifier: String = "") ->[String: String] {
+        if code.isEmpty {
+            return [:]
+        }
+        // Get current locale
+        var locale = Locale.current as NSLocale
+        if (!localeIdentifier.isEmpty) {
+            locale = NSLocale(localeIdentifier: localeIdentifier)
+        }
+
+        guard let countryName = locale.displayName(forKey: .countryCode, value: code) else {
+            return [:]
+        }
+        let simpleCountry = ["name": countryName ,"countryCode": code.lowercased() ]
+        return simpleCountry
     }
 }
