@@ -18,3 +18,7 @@ Fix imports
 ___
 - Optimizations
 - Added API to fetch a country by passing in a country code and optional languageKey.
+
+## 1.1.1
+___
+Updated the readme

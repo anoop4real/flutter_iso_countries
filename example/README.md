@@ -97,14 +97,11 @@ class _MyAppState extends State<MyApp> {
 }
 
 ```
-
-
-
 **New API Added**
 
 Passing in a country code( 2 letter) and an optional localeIdentifier( eg 'de-de', 'fr-fr'), you can get a country object with a translated name.
 
-```swift
+```
   // Platform messages are asynchronous, so we initialize in an async method.
   // IMPORTANT: Make sure the country code passed in is valid, in Android passing
   // in a wrong country code, returns the country name as passed in country code not sure why.
