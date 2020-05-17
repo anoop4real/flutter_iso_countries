@@ -44,7 +44,7 @@ class IsoCountries {
   /// If no valid country found, then you will get an empty hash map
   /// Optional localeIdentifier, if the identifier is not provided, then current locale is used
 
-  static Future<Country> iso_countries_for_code_for_locale(countryCode,
+  static Future<Country> iso_country_for_code_for_locale(countryCode,
       {locale_identifier = ''}) async {
     final countryMap = await _channel.invokeMethod(
         'getCountryForCountryCodeWithLocaleIdentifier',

@@ -98,3 +98,33 @@ class _MyAppState extends State<MyApp> {
 
 ```
 
+
+
+**New API Added**
+
+Passing in a country code( 2 letter) and an optional localeIdentifier( eg 'de-de', 'fr-fr'), you can get a country object with a translated name.
+
+```swift
+  // Platform messages are asynchronous, so we initialize in an async method.
+  // IMPORTANT: Make sure the country code passed in is valid, in Android passing
+  // in a wrong country code, returns the country name as passed in country code not sure why.
+  Future<void> getCountryForCodeWithIdentifier(
+      String code, String localeIdentifier) async {
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      country = await IsoCountries.iso_country_for_code_for_locale(code,
+          locale_identifier: localeIdentifier);
+    } on PlatformException {
+      country = null;
+    }
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      print(country.name);
+    });
+  }
+```
+

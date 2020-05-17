@@ -62,11 +62,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
+  // IMPORTANT: Make sure the country code passed in is valid, in Android passing
+  // in a wrong country code, returns the country name as passed in country code not sure why.
   Future<void> getCountryForCodeWithIdentifier(
       String code, String localeIdentifier) async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      country = await IsoCountries.iso_countries_for_code_for_locale(code,
+      country = await IsoCountries.iso_country_for_code_for_locale(code,
           locale_identifier: localeIdentifier);
     } on PlatformException {
       country = null;
@@ -77,7 +79,6 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      //this.country = country;
       print(country.name);
     });
   }
@@ -117,6 +118,7 @@ class _MyAppState extends State<MyApp> {
             title: Text(country.name),
             subtitle: Text(country.countryCode),
             onTap: () =>
+            // Test: This will get a country object for a code and optional locale passed in
                 getCountryForCodeWithIdentifier(country.countryCode, 'de-de'));
       },
       itemCount: countryList != null ? countryList.length : 0,

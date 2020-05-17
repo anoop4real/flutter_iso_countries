@@ -73,7 +73,7 @@ class CountryDataStore private constructor() {
 
     // Get a country name from code
     fun getCountryForCountryCode(code: String, localeIdentifier: String = "" ): HashMap<String, String> {
-      if (code.isEmpty()){
+      if (code.isEmpty() || code.length > 2){
         return hashMapOf<String, String>()
       }
       val locale = Locale(localeIdentifier,code)
