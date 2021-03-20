@@ -9,7 +9,7 @@ export 'country.dart';
 
 /// Platform channel claa to fetch the country info
 class IsoCountries {
-  static const MethodChannel _channel =
+  static MethodChannel _channel =
       const MethodChannel('com.anoop4real.iso_countries');
 
   /// Function to get the country data in English
