@@ -29,3 +29,15 @@ Upgrade SDK to >=2.12.0
 Updated the readme
 Updated the examples
 Migrate to Android integration 2.0
+
+## 2.0.1
+___
+Upgrade SDK to >=2.12.0 ,
+
+Updated the readme ,
+
+Updated the examples ,
+
+Migrate to Android integration 2.0 ,
+
+Null Safety.

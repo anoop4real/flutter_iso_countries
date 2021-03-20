@@ -12,6 +12,11 @@ Android: API level 21 required
 
 ![iso_countries](https://user-images.githubusercontent.com/6782228/69907084-a58ea080-13ce-11ea-957b-9068a49a6e19.gif)
 
+
+#### Update
+
+Version 2.0.0 updated to support null safety
+
 ## Usage
 For detailed use, see the example.
 ### Fetch Default (English)
