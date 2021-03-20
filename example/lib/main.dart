@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iso_countries/iso_countries.dart';
 
@@ -12,8 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Country> countryList;
-  Country country;
+  List<Country> countryList = <Country>[];
+  Country? country;
   @override
   void initState() {
     super.initState();
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> prepareDefaultCountries() async {
-    List<Country> countries;
+    List<Country>? countries;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       countries = await IsoCountries.iso_countries;
@@ -32,32 +32,40 @@ class _MyAppState extends State<MyApp> {
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
 
     setState(() {
-      countryList = countries;
+      if (countries != null) {
+        countryList = countries;
+      }
     });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> prepareLocaleSpecificCountries() async {
-    List<Country> countries;
+    List<Country>? countries;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       // If you need country names in a specific language please pass language code sample
       // fr-fr, en-en, de-de... IMPORTANT: In Android there seem to be some issue with case
       // so passing fr-FR wont work
-      countries = await IsoCountries.iso_countries_for_locale("fr-fr");
+      countries = await IsoCountries.iso_countries_for_locale('fr-fr');
     } on PlatformException {
       countries = null;
     }
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
 
     setState(() {
-      countryList = countries;
+      if (countries != null) {
+        countryList = countries;
+      }
     });
   }
 
@@ -76,52 +84,50 @@ class _MyAppState extends State<MyApp> {
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
-    if (!mounted) return;
+    if (!mounted) {
+      return;
+    }
 
     setState(() {
-      print(country.name);
+      print(country?.name);
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            actions: <Widget>[
-              FlatButton(
-                textColor: Colors.white,
+  Widget build(BuildContext context) => MaterialApp(
+    home: Scaffold(
+        appBar: AppBar(
+          actions: <Widget>[
+            TextButton(
                 onPressed: prepareLocaleSpecificCountries,
-                child: Text("fr-fr"),
-                shape:
-                    CircleBorder(side: BorderSide(color: Colors.transparent)),
+                child: const Text('fr-fr'),
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                )),
+            TextButton(
+              onPressed: prepareDefaultCountries,
+              style: TextButton.styleFrom(
+                primary: Colors.white,
               ),
-              FlatButton(
-                textColor: Colors.white,
-                onPressed: prepareDefaultCountries,
-                child: Text("Default"),
-                shape:
-                    CircleBorder(side: BorderSide(color: Colors.transparent)),
-              ),
-            ],
-            title: const Text('Plugin example app'),
-          ),
-          body: _buildListOfCountries()),
-    );
-  }
+              child: const Text('Default'),
+            ),
+          ],
+          title: const Text('Plugin example app'),
+        ),
+        body: _buildListOfCountries()),
+  );
 
-  Widget _buildListOfCountries() {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        final Country country = countryList[index];
-        return ListTile(
-            title: Text(country.name),
-            subtitle: Text(country.countryCode),
-            onTap: () =>
-            // Test: This will get a country object for a code and optional locale passed in
-                getCountryForCodeWithIdentifier(country.countryCode, 'de-de'));
-      },
-      itemCount: countryList != null ? countryList.length : 0,
-    );
-  }
+  Widget _buildListOfCountries() => ListView.builder(
+    itemBuilder: (BuildContext context, int index) {
+      final Country country = countryList[index];
+      return ListTile(
+          title: Text(country.name),
+          subtitle: Text(country.countryCode),
+          onTap: () =>
+          // Test: This will get a country object for a code and optional locale passed in
+          getCountryForCodeWithIdentifier(
+              country.countryCode, 'de-de'));
+    },
+    itemCount: countryList.length,
+  );
 }

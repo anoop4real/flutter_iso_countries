@@ -22,3 +22,10 @@ ___
 ## 1.1.1
 ___
 Updated the readme
+
+## 2.0.0
+___
+Upgrade SDK to >=2.12.0
+Updated the readme
+Updated the examples
+Migrate to Android integration 2.0
