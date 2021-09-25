@@ -15,6 +15,10 @@ Android: API level 21 required
 
 #### Update
 
+Version 2.1.0 Android Embedding V2
+
+#### Update
+
 Version 2.0.0 updated to support null safety
 
 ## Usage

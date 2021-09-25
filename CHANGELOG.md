@@ -41,3 +41,13 @@ Updated the examples ,
 Migrate to Android integration 2.0 ,
 
 Null Safety.
+
+## 2.1.0
+___
+Updated the readme ,
+
+Migrate to Android integration V2 Embedding,
+
+Bug Fixes,
+
+Added Country comparator
