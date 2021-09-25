@@ -11,4 +11,13 @@ class Country {
 
   /// Country name
   final String name;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Country && runtimeType == other.runtimeType && countryCode == other.countryCode;
+
+  @override
+  int get hashCode => countryCode.hashCode;
+
 }
