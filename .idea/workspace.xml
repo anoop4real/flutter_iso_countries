@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b33f7de0-51cb-4e73-989d-baf2b55cde26" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/anoop4real/iso_countries/IsoCountriesPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/anoop4real/iso_countries/IsoCountriesPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/android/src/main/kotlin/com/anoop4real/iso_countries/IsoCountriesPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/android/src/main/kotlin/com/anoop4real/iso_countries/IsoCountriesPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/iso_countries/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -63,6 +69,36 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="127" y="125" width="1240" height="614" key="AVDManager" timestamp="1618430929859">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state x="127" y="125" width="1240" height="614" key="AVDManager/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618430929859" />
+    <state width="1398" height="199" key="GridCell.Tab.0.bottom" timestamp="1618431870385">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state width="1398" height="199" key="GridCell.Tab.0.bottom/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618431870385" />
+    <state width="1398" height="199" key="GridCell.Tab.0.bottom/0.25.1440.826@0.25.1440.826" timestamp="1618416891379" />
+    <state width="1398" height="199" key="GridCell.Tab.0.center" timestamp="1618431870385">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state width="1398" height="199" key="GridCell.Tab.0.center/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618431870385" />
+    <state width="1398" height="199" key="GridCell.Tab.0.center/0.25.1440.826@0.25.1440.826" timestamp="1618416891379" />
+    <state width="1398" height="199" key="GridCell.Tab.0.left" timestamp="1618431870385">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state width="1398" height="199" key="GridCell.Tab.0.left/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618431870385" />
+    <state width="1398" height="199" key="GridCell.Tab.0.left/0.25.1440.826@0.25.1440.826" timestamp="1618416891379" />
+    <state width="1398" height="199" key="GridCell.Tab.0.right" timestamp="1618431870385">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state width="1398" height="199" key="GridCell.Tab.0.right/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618431870385" />
+    <state width="1398" height="199" key="GridCell.Tab.0.right/0.25.1440.826@0.25.1440.826" timestamp="1618416891379" />
+    <state x="248" y="68" key="SettingsEditor" timestamp="1618431868039">
+      <screen x="0" y="25" width="1440" height="826" />
+    </state>
+    <state x="248" y="68" key="SettingsEditor/0.25.1440.826/-322.-1055.1920.1055@0.25.1440.826" timestamp="1618431868039" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -73,7 +109,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/android/src/main/kotlin/com/anoop4real/iso_countries/IsoCountriesPlugin.kt</url>
-          <line>79</line>
+          <line>94</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
