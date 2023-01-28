@@ -54,8 +54,15 @@ Added Country comparator
 
 ## 2.2.0
 ___
+
 Updated the readme ,
 
 Updated Kotlin version and Gradle version,
 
 Updated to use D8 instead of deprecated R8 (Android)
+
+Breaking Changes API Naming updates :-
+
+iso_countries => isoCountries
+iso_countries_for_locale => isoCountriesForLocale
+iso_country_for_code_for_locale => isoCountryForCodeForLocale
