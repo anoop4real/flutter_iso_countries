@@ -51,3 +51,11 @@ Migrate to Android integration V2 Embedding,
 Bug Fixes,
 
 Added Country comparator
+
+## 2.2.0
+___
+Updated the readme ,
+
+Updated Kotlin version and Gradle version,
+
+Updated to use D8 instead of deprecated R8 (Android)
