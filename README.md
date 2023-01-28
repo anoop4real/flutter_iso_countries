@@ -28,7 +28,7 @@ For detailed use, see the example.
 ```
     List<Country>? countries;
     try {
-      countries = await IsoCountries.iso_countries;
+      countries = await IsoCountries.isoCountries;
     } on PlatformException {
       countries = null;
     }
@@ -43,7 +43,7 @@ For detailed use, see the example.
       // If you need country names in a specific language please pass language code sample
       // fr-fr, en-en, de-de... IMPORTANT: In Android there seem to be some issue with case
       // so passing fr-FR wont work
-      countries = await IsoCountries.iso_countries_for_locale('fr-fr');
+      countries = await IsoCountries.isoCountriesForLocale('fr-fr');
     } on PlatformException {
       countries = null;
     }
@@ -57,7 +57,7 @@ For detailed use, see the example.
     List<Country>? countries;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      countries = await IsoCountries.iso_countries;
+      countries = await IsoCountries.isoCountries;
     } on PlatformException {
       countries = null;
     }
@@ -76,7 +76,7 @@ For detailed use, see the example.
       // If you need country names in a specific language please pass language code sample
       // fr-fr, en-en, de-de... IMPORTANT: In Android there seem to be some issue with case
       // so passing fr-FR wont work
-      countries = await IsoCountries.iso_countries_for_locale('fr-fr');
+      countries = await IsoCountries.isoCountriesForLocale('fr-fr');
     } on PlatformException {
       countries = null;
     }
@@ -107,7 +107,7 @@ For detailed use, see the example.
       String code, String localeIdentifier) async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      country = await IsoCountries.iso_country_for_code_for_locale(code,
+      country = await IsoCountries.isoCountryForCodeForLocale(code,
           locale_identifier: localeIdentifier);
     } on PlatformException {
       country = null;

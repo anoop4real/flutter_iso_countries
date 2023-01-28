@@ -7,18 +7,18 @@ import 'package:iso_countries/country.dart';
 
 export 'country.dart';
 
-/// Platform channel claa to fetch the country info
+/// Platform channel class to fetch the country info
 class IsoCountries {
   static MethodChannel _channel =
       const MethodChannel('com.anoop4real.iso_countries');
 
   /// Function to get the country data in English
-  static Future<List<Country>> get iso_countries async {
+  static Future<List<Country>> get isoCountries async {
     final List<Country> isoCountries = [];
     final List countries = await _channel.invokeMethod('getISOCountries');
     // Parse
     for (final countryMap in countries) {
-      final country = Country(
+      final Country country = Country(
           name: countryMap['name'], countryCode: countryMap['countryCode']);
       isoCountries.add(country);
     }
@@ -26,14 +26,14 @@ class IsoCountries {
   }
 
   /// Function to get the country data in the language code passed in
-  static Future<List<Country>> iso_countries_for_locale(
-      locale_identifier) async {
+  static Future<List<Country>> isoCountriesForLocale(
+      localeIdentifier) async {
     final List<Country> isoCountries = [];
     final List countries = await _channel.invokeMethod(
-        'getISOCountriesForLocale', {'locale_identifier': locale_identifier});
+        'getISOCountriesForLocale', {'locale_identifier': localeIdentifier});
     // Parse
     for (final countryMap in countries) {
-      final country = Country(
+      final Country country = Country(
           name: countryMap['name'], countryCode: countryMap['countryCode']);
       isoCountries.add(country);
     }
@@ -44,11 +44,11 @@ class IsoCountries {
   /// If no valid country found, then you will get an empty hash map
   /// Optional localeIdentifier, if the identifier is not provided, then current locale is used
 
-  static Future<Country> iso_country_for_code_for_locale(countryCode,
-      {locale_identifier = ''}) async {
+  static Future<Country> isoCountryForCodeForLocale(countryCode,
+      {localeIdentifier = ''}) async {
     final countryMap = await _channel.invokeMethod(
         'getCountryForCountryCodeWithLocaleIdentifier',
-        {'countryCode': countryCode, 'locale_identifier': locale_identifier});
+        {'countryCode': countryCode, 'locale_identifier': localeIdentifier});
     // Parse
     final Country country = Country(
         name: countryMap['name'], countryCode: countryMap['countryCode']);
